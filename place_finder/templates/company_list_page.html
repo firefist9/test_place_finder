@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2> {{ category }} </h2>
+{% for object in object_list %}
+    {% if object.category == category %}
+        <li><a href = "{% url 'company_detail' object.category object.pk %}">{{ object.name }}</a></li>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
