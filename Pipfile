@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 django = "*"
 django-leaflet = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.6"

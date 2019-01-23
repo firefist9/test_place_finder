@@ -2,6 +2,8 @@ from django.views.generic import ListView, DetailView
 from .models import Category, Company
 from django.template import RequestContext
 from django.shortcuts import get_object_or_404
+from django.shortcuts import render
+from .filters import CompanyFilter
 
 class CategoryListView(ListView):
     model = Category
@@ -25,3 +27,8 @@ class CompanyDetailView(DetailView):
     template_name = 'company_detail.html'
     model = Company
 
+
+def search(request):
+    company_list = Company.objects.all()
+    company_filter = CompanyFilter(request.GET, queryset=company_list)
+    return render(request, 'company_search.html', {'filter': company_filter})

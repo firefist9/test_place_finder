@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form method="get">
+    {{ filter.form.as_p }}
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+  {% for object in filter.qs %}
+    <li><a href = "{% url 'company_detail' object.category object.pk %}">{{ object.name }} - {{ object.category }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}
